@@ -23,14 +23,12 @@ typedef struct  {
 int total=0; //tamanho do vetor de cadastro
 Produto *cadastro; // vetor de cadastro
 
-void ler(char buffer[], int tamanho){ // leitura de strings sem risco de problema com quebra de linha \n
-    int pos_enter; // variavel para posição do \n
-    getchar(); // recebe um enter
-    fflush(stdin); // limpa o buffer
-    fgets(buffer,tamanho,stdin);// recebe a string 
-    pos_enter=strcspn(buffer,"\n"); //recebe a posiçao da quebra
-    buffer[pos_enter]=0; // manda um caracter nulo no lugar o \n
-    fflush(stdin);// limpa o buffer de novo
+void ler(char buffer[], int tamanho){
+
+    
+    fgets(buffer, tamanho, stdin);
+
+    buffer[strcspn(buffer,"\n")] = '\0';
     
 }
 
@@ -40,10 +38,10 @@ void cadastrar(){
     Produto p;
 
     printf("Digite o ID do produto: ");
-    fgets(p.nomeProduto, sizeof(p.idProduto), stdin);
+    ler(p.idProduto,TAM);
 
     printf("Digite o nome do produto: ");
-    fgets(p.nomeProduto, sizeof(p.nomeProduto), stdin);
+    ler(p.nomeProduto,TAM);
 
     printf("Digite o ID da matéria-prima: ");
     scanf("%d",&p.idMaterial);
@@ -53,7 +51,8 @@ void cadastrar(){
 
     printf("Digite o tempo de fabricação em horas: ");
     scanf("%f",&p.tFabrica);
-
+    getchar();
+    
     FILE *arquivo = fopen(LAB, "a");
 
     if(arquivo == NULL){
@@ -61,7 +60,7 @@ void cadastrar(){
         return;
     }
 
-    fprintf(arquivo,"%s;%s;%d;%.2f;%.2f\n",
+    fprintf(arquivo,"%s;%s;%d;%.2f;%.1f\n",
             p.idProduto,
             p.nomeProduto,
             p.idMaterial,
@@ -81,6 +80,7 @@ int inserirMenu(){
     int menu;
     scanf("%d",&menu);
     getchar();
+    
 
     return menu;
 }
