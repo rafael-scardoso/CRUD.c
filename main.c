@@ -112,11 +112,11 @@ int main(){
     int menu;
     setlocale(LC_ALL, "Portuguese");
 
-    FILE *arquivo = fopen(LAB, "r+"); // bloco verifica se o arquivo existe. se não existe, ele é criado e adicionado cabeçalho
-    if(arquivo == NULL){
-    arquivo = fopen(LAB, "w");
-    fputs("ID;NOME;MATERIAL;PESO;TEMPO\n",arquivo);
-    fclose(arquivo);  
+    //FILE *arquivo = fopen(LAB, "r+"); // bloco verifica se o arquivo existe. se não existe, ele é criado e adicionado cabeçalho
+    //if(arquivo == NULL){
+    //arquivo = fopen(LAB, "w");
+    //fputs("ID;NOME;MATERIAL;PESO;TEMPO\n",arquivo);
+   // fclose(arquivo);  
     }
     printf("------------------------------------------------------ \n");
     printf("Bem vindo ao cadastro de produtos da Lab Urban 10\n");
